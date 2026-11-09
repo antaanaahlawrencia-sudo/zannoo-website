@@ -1,0 +1,59 @@
+STAGE 1 SETUP: ENQUIRY DATABASE + STAFF DASHBOARD (Supabase)
+============================================================
+Time needed: about 30 to 45 minutes. Use a school-owned email, not a personal one, so the
+school keeps control of the account.
+
+STEP 1 - Create the project
+  1. Go to supabase.com and sign up. Click "New project".
+  2. Name it "zannoo-school". Choose a region close to Ghana. Set a strong database password
+     and save it somewhere safe (school office safe or password manager).
+
+STEP 2 - Create the tables and security rules
+  1. In the left menu open "SQL Editor" > "New query".
+  2. Open schema.sql from this folder, copy everything, paste it, click "Run".
+  3. It should say "Success". This creates the enquiries table so that the public can only
+     SUBMIT enquiries, and only listed staff can read or change them.
+
+STEP 3 - Create staff logins
+  1. Authentication > Sign In / Providers (or Settings): switch OFF "Allow new users to sign up".
+  2. Authentication > Users > "Add user": enter the staff email and a strong password, and tick
+     auto-confirm. Do this for each staff member who should see enquiries.
+  3. SQL Editor, run once per person (change the name and email):
+       insert into public.staff (user_id, full_name)
+         select id, 'Full Name' from auth.users where email = 'staff@example.com';
+
+STEP 4 - Connect the website
+  1. Project Settings > API (newer dashboards: "API Keys"). Copy the Project URL and the
+     anon / public key (newer dashboards call it the "publishable" key).
+  2. Open config.js and paste them between the quotes.
+  3. NEVER paste the service_role / secret key anywhere in the website files.
+
+STEP 5 - Publish and test
+  1. Upload the whole folder to your host (see README.txt).
+  2. Submit a test enquiry on admissions.html and on contact.html.
+  3. Open yoursite/admin.html, log in, and confirm both appear. Try changing the status, adding
+     a note, searching, and "Export to Excel (CSV)".
+  4. Try the dashboard with an account that is NOT in the staff table: it must refuse.
+
+STEP 6 - Optional email alert for every new enquiry
+  Create a Google Apps Script web app (as in README.txt step 3) but with only this code, then put
+  its link in FORM_ENDPOINT in config.js:
+      function doPost(e) {
+        var p = e.parameter;
+        MailApp.sendEmail('zannoo.int.sch@gmail.com', 'New website enquiry: ' + p.type,
+          'Parent/Name: ' + (p.parent || p.name) + '\nPhone: ' + p.phone + '\nEmail: ' + p.email +
+          '\nChild: ' + (p.child || '') + '\nClass: ' + (p.grade || '') + '\nMessage: ' + (p.message || ''));
+        return ContentService.createTextOutput('ok');
+      }
+  (The records themselves are kept in Supabase, not in a sheet.)
+
+SECURITY AND CARE
+  - Give each staff member their own login. Remove a person's access the day they leave
+    (delete the user in Authentication > Users).
+  - Do not share the admin password by WhatsApp group. Do not leave the dashboard open on shared computers.
+  - Check Authentication settings for two-factor options and turn them on for staff if available.
+  - Backups: check what your Supabase plan offers. Until automatic backups are confirmed, use
+    "Export to Excel (CSV)" every week and keep the file safe.
+  - The school should confirm with Ghana's Data Protection Commission whether it must register,
+    since it holds children's information.
+  - Update privacy.html if you add accounts, payments or new kinds of data later.

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Staff Dashboard | Zannoo International School</title>
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+ .ad{max-width:1200px;margin:0 auto;padding:1.2rem}
+ .adh{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}.adh img{width:48px;height:48px}.adh h1{font-size:1.25rem;margin:0}
+ .bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:0 0 1rem}
+ .bar input,.bar select{padding:.5rem;border:1px solid #9bbfa9;border-radius:6px;font:inherit}
+ .login{max-width:380px;margin:3rem auto;padding:1.5rem;border:1px solid #cfe3d6;border-radius:10px;background:#fff}
+ .login label{display:block;margin:0 0 .8rem}.login input{display:block;width:100%;padding:.55rem;border:1px solid #9bbfa9;border-radius:6px;font:inherit}
+ .msg{padding:.6rem .8rem;border-radius:6px;background:#e8f4ec;margin:0 0 1rem}.msg.err{background:#fde8e8}
+ table.q{border-collapse:collapse;width:100%;font-size:.92rem}
+ table.q th,table.q td{border-bottom:1px solid #dbe9e0;padding:.5rem;text-align:left;vertical-align:top}
+ table.q th{background:#0b3d24;color:#fff;position:sticky;top:0}
+ .q textarea{width:100%;min-height:3.2rem;font:inherit;border:1px solid #9bbfa9;border-radius:6px}
+ .q select{font:inherit;padding:.3rem}
+ .tag{display:inline-block;padding:.1rem .5rem;border-radius:99px;background:#e8f4ec;font-size:.8rem}
+ .wide{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="ad">
+ <div class="adh"><img src="logo.png" alt=""><h1>Zannoo staff dashboard: enquiries</h1></div>
+ <div id="notice" class="msg" hidden></div>
+
+ <div id="loginbox" class="login" hidden>
+  <h2 style="margin-top:0">Staff login</h2>
+  <form id="lf"><label>Email<input id="em" type="email" autocomplete="username" required></label>
+  <label>Password<input id="pw" type="password" autocomplete="current-password" required></label>
+  <button class="btn" type="submit">Log in</button></form>
+ </div>
+
+ <div id="dash" hidden>
+  <div class="bar">
+   <input id="q" type="search" placeholder="Search name, phone, email, child" aria-label="Search">
+   <select id="sf" aria-label="Filter by status"><option value="">All statuses</option></select>
+   <select id="tf" aria-label="Filter by type"><option value="">All types</option><option>Admission enquiry</option><option>Website message</option></select>
+   <button class="btn" id="exp" type="button">Export to Excel (CSV)</button>
+   <button class="btn" id="rf" type="button">Refresh</button>
+   <button class="btn" id="lo" type="button" style="background:#fff;color:#13713f;border:2px solid #13713f">Log out</button>
+  </div>
+  <p id="count"></p>
+  <div class="wide"><table class="q"><thead><tr><th>Date</th><th>Type</th><th>Parent</th><th>Contact</th><th>Child / class</th><th>Message</th><th>Status</th><th>Notes</th></tr></thead><tbody id="rows"></tbody></table></div>
+ </div>
+</div>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.75.0/dist/umd/supabase.js"></script>
+<script>
+(function () {
+  var STATUSES = ['New', 'Contacted', 'Toured', 'Offered', 'Enrolled', 'Closed'];
+  var $ = function (id) { return document.getElementById(id); };
+  var all = [], sb;
+
+  function note(t, err) { var n = $('notice'); n.textContent = t; n.className = 'msg' + (err ? ' err' : ''); n.hidden = !t; }
+  function el(tag, text, attrs) { var e = document.createElement(tag); if (text != null) e.textContent = text; for (var k in (attrs || {})) e.setAttribute(k, attrs[k]); return e; }
+
+  if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY || !window.supabase) {
+    note('Setup not finished: add SUPABASE_URL and SUPABASE_ANON_KEY in config.js (see SETUP-BACKEND.txt).', true); return;
+  }
+  sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  STATUSES.forEach(function (s) { $('sf').appendChild(el('option', s)); });
+
+  function show(loggedIn) { $('loginbox').hidden = loggedIn; $('dash').hidden = !loggedIn; }
+
+  async function start() {
+    var s = await sb.auth.getSession();
+    if (!s.data.session) { show(false); return; }
+    var me = await sb.from('staff').select('user_id').maybeSingle();
+    if (!me.data) { await sb.auth.signOut(); show(false); note('This account is not authorised for the dashboard.', true); return; }
+    note(''); show(true); load();
+  }
+
+  $('lf').addEventListener('submit', async function (e) {
+    e.preventDefault(); note('');
+    var r = await sb.auth.signInWithPassword({ email: $('em').value.trim(), password: $('pw').value });
+    if (r.error) { note('Login failed: ' + r.error.message + ' (check your email and password)', true); return; }
+    $('pw').value = ''; start();
+  });
+  $('lo').addEventListener('click', async function () { await sb.auth.signOut(); all = []; show(false); });
+  $('rf').addEventListener('click', load);
+
+  async function load() {
+    var r = await sb.from('enquiries').select('*').order('created_at', { ascending: false }).limit(1000);
+    if (r.error) { note('Could not load enquiries: ' + r.error.message, true); return; }
+    all = r.data; render();
+  }
+
+  function filtered() {
+    var q = $('q').value.trim().toLowerCase(), s = $('sf').value, t = $('tf').value;
+    return all.filter(function (x) {
+      if (s && x.status !== s) return false;
+      if (t && x.type !== t) return false;
+      if (!q) return true;
+      return [x.parent_name, x.phone, x.email, x.child_name, x.message].join(' ').toLowerCase().indexOf(q) > -1;
+    });
+  }
+
+  function render() {
+    var list = filtered(), body = $('rows'); body.textContent = '';
+    $('count').textContent = list.length + ' of ' + all.length + ' enquiries';
+    list.forEach(function (x) {
+      var tr = el('tr');
+      tr.appendChild(el('td', new Date(x.created_at).toLocaleString()));
+      var td = el('td'); td.appendChild(el('span', x.type, { 'class': 'tag' })); tr.appendChild(td);
+      tr.appendChild(el('td', x.parent_name));
+      td = el('td'); td.appendChild(el('a', x.phone, { href: 'tel:' + x.phone.replace(/[^0-9+]/g, '') })); td.appendChild(el('br'));
+      td.appendChild(el('a', x.email, { href: 'mailto:' + x.email })); tr.appendChild(td);
+      tr.appendChild(el('td', (x.child_name || '') + (x.grade ? ' (' + x.grade + ')' : '')));
+      tr.appendChild(el('td', x.message || ''));
+      td = el('td'); var sel = el('select', null, { 'aria-label': 'Status' });
+      STATUSES.forEach(function (s) { var o = el('option', s); if (s === x.status) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener('change', function () { save(x, { status: sel.value }); });
+      td.appendChild(sel); tr.appendChild(td);
+      td = el('td'); var ta = el('textarea', x.notes || '', { 'aria-label': 'Notes', maxlength: '4000' });
+      ta.addEventListener('change', function () { save(x, { notes: ta.value }); });
+      td.appendChild(ta); tr.appendChild(td);
+      body.appendChild(tr);
+    });
+  }
+
+  async function save(x, patch) {
+    var r = await sb.from('enquiries').update(patch).eq('id', x.id);
+    if (r.error) { note('Could not save: ' + r.error.message, true); return; }
+    for (var k in patch) x[k] = patch[k];
+    note('Saved.'); setTimeout(function () { note(''); }, 1500);
+  }
+
+  function csvCell(v) {
+    v = v == null ? '' : String(v);
+    if (/^[=+\-@\t\r]/.test(v)) v = "'" + v;   // stops spreadsheet formula injection
+    return '"' + v.replace(/"/g, '""') + '"';
+  }
+  $('exp').addEventListener('click', function () {
+    var cols = ['created_at', 'type', 'parent_name', 'phone', 'email', 'child_name', 'grade', 'message', 'status', 'notes'];
+    var lines = [cols.join(',')].concat(filtered().map(function (x) { return cols.map(function (c) { return csvCell(x[c]); }).join(','); }));
+    var a = el('a', null, { href: URL.createObjectURL(new Blob(['\ufeff' + lines.join('\r\n')], { type: 'text/csv' })), download: 'zannoo-enquiries.csv' });
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  ['q', 'sf', 'tf'].forEach(function (id) { $(id).addEventListener('input', render); });
+
+  start();
+})();
+</script>
+</body>
+</html>
