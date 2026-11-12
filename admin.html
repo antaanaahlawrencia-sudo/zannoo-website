@@ -79,7 +79,7 @@
   $('lf').addEventListener('submit', async function (e) {
     e.preventDefault(); note('');
     var r = await sb.auth.signInWithPassword({ email: $('em').value.trim(), password: $('pw').value });
-    if (r.error) { note('Login failed: ' + r.error.message + ' (check your email and password)', true); return; }
+    if (r.error) { note('Login failed. Check your email and password.', true); return; }
     $('pw').value = ''; start();
   });
   $('lo').addEventListener('click', async function () { await sb.auth.signOut(); all = []; show(false); });

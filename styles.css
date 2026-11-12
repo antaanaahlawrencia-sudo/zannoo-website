@@ -448,18 +448,16 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:5px;b
 .tt{background:var(--forest);border-radius:22px}
 @media (max-width:560px){.eyebrow{font-size:.68rem;padding:.35rem .8rem;border-radius:18px}.hero-body h2{font-size:2.2rem}}
 
-/* ================= home slideshow (real school photos) ================= */
+/* ================= home slideshow (real school photos, 7 slides x 6s) ================= */
 .slides{position:absolute;inset:0;overflow:hidden}
-.slide{position:absolute;inset:0;opacity:0;animation:slidefade 16s infinite}
-.slide.s2{animation-delay:8s}
+.slide{position:absolute;inset:0;opacity:0;animation:slidefade 42s infinite;animation-delay:calc(var(--i)*6s)}
 .slide .bg{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(26px) brightness(.85) saturate(1.1)}
-.slide .fg{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;max-height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%);mask-image:linear-gradient(180deg,transparent,#000 22%);animation:kb 16s infinite}
-.slide.s2 .fg{animation-delay:8s}
-@keyframes slidefade{0%{opacity:0}6%{opacity:1}46%{opacity:1}56%{opacity:0}100%{opacity:0}}
-@keyframes kb{0%{transform:scale(1)}100%{transform:scale(1.06)}}
+.slide .fg{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;max-height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(180deg,transparent,#000 10%);mask-image:linear-gradient(180deg,transparent,#000 10%);}
+@keyframes slidefade{0%{opacity:0}3%{opacity:1}15%{opacity:1}19%{opacity:0}100%{opacity:0}}
 @media (max-width:820px){.slide .fg{height:62%}}
-@media (prefers-reduced-motion:reduce){.slide,.slide .fg{animation:none}.slide.s1{opacity:1}.slide.s2{display:none}}
-.hero::before{background:radial-gradient(900px 420px at 80% 10%,rgba(31,164,99,.28),transparent 60%),linear-gradient(90deg,rgba(4,30,18,.88),rgba(4,30,18,.55) 55%,rgba(4,30,18,.35)),linear-gradient(180deg,rgba(4,30,18,.55),rgba(4,30,18,.1) 40%,rgba(4,30,18,.8))}
+@media (prefers-reduced-motion:reduce){.slide{animation:none}.slide{display:none}.slide:first-child{display:block;opacity:1}}
+.hero::before{background:linear-gradient(90deg,rgba(4,30,18,.82) 0%,rgba(4,30,18,.45) 40%,rgba(4,30,18,0) 70%),linear-gradient(180deg,rgba(4,30,18,.45),rgba(4,30,18,0) 22%,rgba(4,30,18,0) 70%,rgba(4,30,18,.45))}
+@media (max-width:820px){.hero::before{background:linear-gradient(180deg,rgba(4,30,18,.8),rgba(4,30,18,.55) 45%,rgba(4,30,18,.1) 100%)}}
 
 /* ================= news bar ================= */
 .newsbar{background:#fff;border-bottom:1px solid #dcece3;font-size:.92rem}
@@ -496,3 +494,38 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:5px;b
 .hero-body{position:relative}
 .hero-body::before{content:"";position:absolute;inset:-1.5rem -2rem -1rem -6rem;background:radial-gradient(ellipse at 35% 55%,rgba(4,30,18,.5),rgba(4,30,18,0) 68%);z-index:-1;pointer-events:none}
 .hero-body p{font-weight:600}
+
+/* Gallery photos */
+.gfilter{display:flex;flex-wrap:wrap;gap:8px;margin:1.1rem 0 1.2rem}
+.gfilter button{font:inherit;font-weight:700;font-size:.92rem;padding:.5rem 1.05rem;border-radius:999px;border:1.5px solid var(--leaf);background:#fff;color:var(--forest);cursor:pointer;transition:background .2s,color .2s}
+.gfilter button:hover{background:var(--mint)}
+.gfilter button.on{background:var(--forest);border-color:var(--forest);color:#fff}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.photos figure{margin:0;position:relative;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s}
+.photos figure[hidden]{display:none}
+.photos figure:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.photos a{display:block;aspect-ratio:4/3;overflow:hidden;background:var(--mint)}
+.photos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.photos a:hover img{transform:scale(1.06)}
+.photos figcaption{padding:.7rem .9rem;font-size:.93rem;font-weight:700;color:var(--forest);border-top:3px solid var(--leaf)}
+.photos .feature{grid-column:1/-1}
+.photos .feature a{aspect-ratio:16/9}
+.photos .feature figcaption{font-size:1.05rem;font-family:var(--serif)}
+.lbx{position:fixed;inset:0;z-index:1000;background:rgba(4,28,16,.95);display:flex;align-items:center;justify-content:center;padding:1rem}
+.lbx[hidden]{display:none}
+.lbx figure{margin:0;max-width:min(92vw,1100px);text-align:center}
+.lbx img{max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lbx figcaption{color:#fff;margin-top:.8rem;font-weight:600}
+.lbx button{background:rgba(255,255,255,.12);border:0;color:#fff;cursor:pointer;border-radius:50%;width:46px;height:46px;font-size:2rem;line-height:1;display:grid;place-items:center}
+.lbx button:hover{background:rgba(255,255,255,.28)}
+.lbx-x{position:absolute;top:14px;right:14px}
+.lbx-n{flex:none;margin:0 .6rem}
+@media(max-width:600px){.lbx{flex-wrap:wrap;align-content:center}.lbx figure{order:0;width:100%}.lbx-n{order:1;margin:1rem .8rem 0}.photos{grid-template-columns:repeat(2,1fr);gap:10px}.photos figcaption{font-size:.82rem;padding:.55rem .6rem}}
+@media(prefers-reduced-motion:reduce){.photos figure,.photos img{transition:none}}
+
+@media (max-width:820px){.hero::before{background:linear-gradient(180deg,rgba(4,30,18,.8),rgba(4,30,18,.55) 45%,rgba(4,30,18,.1) 100%)}}
+
+/* slideshow: photo fills the whole banner, no blurred area or fade at the top */
+.slide .bg{display:none}
+.slide .fg{top:0;bottom:0;height:100%;max-height:none;object-fit:cover;object-position:center 35%;-webkit-mask-image:none;mask-image:none}
+@media (max-width:820px){.slide .fg{height:100%}}
