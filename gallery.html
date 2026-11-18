@@ -71,8 +71,22 @@
         <figure data-cat="staff"><a href="gallery-staff-team.jpg" class="gl" data-cap="The Zannoo team"><img src="gallery-staff-team.jpg" width="1080" height="719" alt="Six Zannoo staff members smiling at reception" loading="lazy"></a><figcaption>The Zannoo team</figcaption></figure>
         <figure data-cat="staff"><a href="gallery-reception.jpg" class="gl" data-cap="At the front desk"><img src="gallery-reception.jpg" width="1080" height="719" alt="Two staff members at the school reception desk" loading="lazy"></a><figcaption>At the front desk</figcaption></figure>
       </div></section>
-    <section><h3>School life on video</h3>
+    <section id="videos"><h3>School life on video</h3>
       <p>See our school in action. More videos and photos are shared on our TikTok page.</p>
+      <div class="vpair"><figure class="feat-video"><video controls preload="none" playsinline poster="video-aerial-school.jpg" aria-label="Aerial view of Zannoo International School"><source src="video-aerial-school.mp4" type="video/mp4"></video><figcaption>Our school from above</figcaption></figure><figure class="feat-video"><video controls preload="none" playsinline poster="video-music-dance.jpg" aria-label="Drumming and dance at Zannoo International School"><source src="video-music-dance.mp4" type="video/mp4"></video><figcaption>Drumming and dance</figcaption></figure></div>
+      <div class="vgrid">
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-science-fact.jpg" aria-label="A pupil shares a science fact in class"><source src="video-science-fact.mp4" type="video/mp4"></video><figcaption>Science Fact</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-little-ones.jpg" aria-label="Nursery and KG pupils enjoying the playground"><source src="video-little-ones.mp4" type="video/mp4"></video><figcaption>Our little ones at play</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-library-reading.jpg" aria-label="A pupil reading in our school library"><source src="video-library-reading.mp4" type="video/mp4"></video><figcaption>Reading time</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-library-learning.jpg" aria-label="A pupil studying with books and a dictionary"><source src="video-library-learning.mp4" type="video/mp4"></video><figcaption>Learning in the library</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-human-body.jpg" aria-label="A pupil in a lab coat at the science lab model"><source src="video-human-body.mp4" type="video/mp4"></video><figcaption>Learning the human body</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-hands-on-science.jpg" aria-label="Pupils doing a hands-on activity"><source src="video-hands-on-science.mp4" type="video/mp4"></video><figcaption>Hands-on science</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-future-doctors.jpg" aria-label="Two pupils dressed as doctors"><source src="video-future-doctors.mp4" type="video/mp4"></video><figcaption>Our future doctors</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-pupils-together.jpg" aria-label="Pupils sitting together on the school grounds"><source src="video-pupils-together.mp4" type="video/mp4"></video><figcaption>Meet our pupils</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-hello-pupil-1.jpg" aria-label="A pupil speaking in the school atrium"><source src="video-hello-pupil-1.mp4" type="video/mp4"></video><figcaption>Hello from Zannoo</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-pupils-share.jpg" aria-label="Pupils talk about their school"><source src="video-pupils-share.mp4" type="video/mp4"></video><figcaption>Pupils share school life</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-science-lab.jpg" aria-label="A pupil at the science lab"><source src="video-science-lab.mp4" type="video/mp4"></video><figcaption>In the science lab</figcaption></figure>
+      </div>
       <div class="tt"><iframe src="https://www.tiktok.com/embed/v2/7689522445824314632" title="Zannoo International School video on TikTok" loading="lazy" allowfullscreen allow="encrypted-media; fullscreen"></iframe></div>
       <p style="margin-top:1.2rem"><a class="btn" href="https://www.tiktok.com/@zis_official1" target="_blank" rel="noopener">Watch more on TikTok</a></p></section>
   </div>
@@ -117,6 +131,10 @@ document.addEventListener('keydown',function(e){if(box.hidden)return;if(e.key===
 })();
 </script>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+(function(){var vs=[].slice.call(document.querySelectorAll('.vcard video,.feat-video video'));
+vs.forEach(function(v){v.addEventListener('play',function(){vs.forEach(function(o){if(o!==v)o.pause();});});});})();
+</script>
 <script src="config.js"></script>
 <script src="script.js"></script>
 </body>

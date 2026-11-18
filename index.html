@@ -18,6 +18,7 @@
 <div class="topbar"><div class="wrap">
   <span>Phone: <a href="tel:+233504777497">050 477 7497</a> / <a href="tel:+233244984974">024 498 4974</a></span>
   <span><a href="mailto:zannoo.int.sch@gmail.com">zannoo.int.sch@gmail.com</a></span>
+  <span class="tb-links"><a href="admin.html">Staff login</a><a href="fees.html#pay">Fee payment</a><a href="https://www.tiktok.com/@zis_official1" target="_blank" rel="noopener">TikTok</a><a class="tb-adm" href="admissions.html#enquire">Admissions open</a></span>
 </div></div>
 <div class="newsbar" role="region" aria-label="School news"><div class="wrap">
   <span class="nb-label">News</span>
@@ -45,8 +46,7 @@
     <div class="slide" style="--i:5"><img class="bg" src="hero-kg-classroom.jpg" alt="" loading="lazy"><img class="fg" src="hero-kg-classroom.jpg" alt="" loading="lazy"></div>
     <div class="slide" style="--i:6"><img class="bg" src="hero-student.jpg" alt="" loading="lazy"><img class="fg" src="hero-student.jpg" alt="" loading="lazy"></div>
   </div>
-  <!-- To use the school's own video later: upload it here (MP4, under 15 MB) and replace the two images above with:
-  <video autoplay muted loop playsinline poster="hero-building.jpg" aria-hidden="true" tabindex="-1"><source src="school.mp4" type="video/mp4"></video> -->
+  <video class="hero-vid" id="heroVid" muted loop playsinline preload="auto" poster="school-hero.jpg" aria-hidden="true" tabindex="-1"><source src="school-hero.mp4" type="video/mp4"></video>
   <div class="in">
 <header class="wrap brand">
   <a href="index.html" aria-label="Zannoo International School home"><img src="logo.png" width="68" height="68" alt="Zannoo International School crest"></a>
@@ -60,48 +60,119 @@
       <p class="eyebrow">Oxford International &amp; GES Curricula &middot; Admissions are open</p>
       <h2>Welcome to Zannoo International School</h2>
       <p>The school of life and learning: a beacon of holistic quality education in Ghana, combining the Oxford International Curriculum with the GES curriculum.</p>
-      <div class="btns"><a class="btn light" href="admissions.html#enquire">Apply now</a><a class="btn line" href="academics.html">Explore academics</a></div>
+      <div class="btns"><a class="btn light" href="admissions.html#enquire">Apply now</a><a class="btn line" href="academics.html">Explore academics</a><button type="button" class="btn line" data-tour>&#9654; Campus tour</button></div>
     </div>
   </div>
 </div>
 <main id="main">
+<section class="hp-quick" aria-label="Quick links"><div class="wrap"><ul><li><a href="admissions.html"><span class="hp-qi"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9z"/><path d="M7 5.5H5.5V20h13V5.5H17"/><path d="M9 13.5l2 2 4-4.5"/></svg></span><strong>Admissions</strong><small>How to apply</small></a></li><li><a href="fees.html#pay"><span class="hp-qi"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10.5h18"/><path d="M7 15h3"/></svg></span><strong>Fees &amp; payment</strong><small>Cashless school</small></a></li><li><a href="fees.html#dates"><span class="hp-qi"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><strong>Key dates</strong><small>Terms and reopening</small></a></li><li><a href="admissions.html#uniform"><span class="hp-qi"><svg viewBox="0 0 24 24"><path d="M8 4l-5 3 2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg></span><strong>Uniform &amp; rules</strong><small>Dress code</small></a></li><li><a href="gallery.html"><span class="hp-qi"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 8"/></svg></span><strong>Gallery</strong><small>Photos and videos</small></a></li><li><a href="contact.html"><span class="hp-qi"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.400-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>Contact us</strong><small>Visit or call</small></a></li></ul></div></section>
+
+<section class="full hp-about"><div class="wrap hp-about-grid">
+  <div>
+    <p class="kicker">About us</p>
+    <h3>Welcome to Zannoo International School</h3>
+    <p class="hp-lead">The school of life and learning: a beacon of holistic quality education in the Upper West Region of Ghana.</p>
+    <p>Zannoo International School combines the Oxford International Curriculum with the GES curriculum. Our approach is skills-based and inquiry-led, with a focus on critical thinking and global competence, so learners are globally competitive while firmly grounded in national standards and cultural values.</p>
+    <p>We opened on Saturday 6th September 2025 on the conviction that where a child lives should never limit access to quality education.</p>
+    <div class="btns"><a class="btn" href="about.html">Read more about us</a><a class="btn ghost" href="admissions.html#enquire">Admission enquiry</a></div>
+  </div>
+  <figure class="hp-media"><img src="building.jpg" width="990" height="377" alt="The Zannoo International School building at New Nakore-Paani, Wa" loading="lazy"><button type="button" class="hp-play" data-tour aria-label="Play the campus tour video"><span>&#9654;</span> Campus tour</button></figure>
+</div>
+<div class="wrap hp-stats" aria-label="School at a glance">
+  <div><b data-count="200" data-suffix="+">200+</b><span>learners, grown from about 37 when we opened</span></div>
+  <div><b data-count="20" data-prefix="Max ">Max 20</b><span>learners in every class</span></div>
+  <div><b>Qualified</b><span>teachers, each with at least a Diploma in Education</span></div>
+  <div><b>Oxford</b><span>full accreditation, Early Years to A/O-Level</span></div>
+</div></section>
+
+<section class="hp-mvm"><div class="wrap">
+  <div class="hp-motto"><img src="logo.png" width="96" height="96" alt="Zannoo International School crest"><div><p class="kicker">Our motto</p><h3>The School of Life and Learning</h3><p>Nurturing Minds. Building Character. Inspiring Greatness.</p></div></div>
+  <div class="hp-cols">
+    <div><h4>Our vision</h4><p>To be a beacon of holistic quality education in Ghana.</p></div>
+    <div><h4>Our mission</h4><p>To provide a transformatory educational experience that combines International and GES curricula, nurturing future leaders through academic excellence, Godly values, and a commitment to greatness.</p></div>
+    <div><h4>Our values</h4><p>Academic excellence, Godly values, a commitment to greatness, and equity and global relevance for every learner.</p></div>
+  </div>
+</div></section>
+
 <section class="full"><div class="wrap">
-  <h3>Everything parents need</h3><p class="lede">Find out how to join us and what your child will learn.</p>
-  <div class="cards">
-    <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9z"/><path d="M7 5.5H5.5V20h13V5.5H17"/><path d="M9 13.5l2 2 4-4.5"/></svg></span><h4>Admissions</h4><p>Steps to apply, documents to bring and our enquiry form.</p><a class="more" href="admissions.html">How to apply</a></div>
-    <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 5h6.5a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H2.5z"/><path d="M21.5 5H15a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h7.5z"/></svg></span><h4>Academics</h4><p>The Oxford International Curriculum alongside GES, taught by qualified teachers.</p><a class="more" href="academics.html">Our programmes</a></div>
-    <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-9 8"/></svg></span><h4>Gallery</h4><p>Videos and moments from school life.</p><a class="more" href="gallery.html">See the gallery</a></div>
-    <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.6 2.7-6 6-6s6 2.4 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16.2 14.3c2.9.3 4.8 2.3 4.8 5.2"/></svg></span><h4>Staff</h4><p>The qualified team that looks after every child.</p><a class="more" href="staff.html">Meet the team</a></div>
-  </div></div></section>
-<section class="full tint"><div class="wrap split">
-  <div><h3>Take a look inside our school</h3>
-  <p>With a maximum of 20 learners per class, inclusive tech-enhanced spaces and SEN support, every child gets the attention they need to grow in learning and in life.</p>
-  <p>Watch a video from our school on TikTok, then book a visit to see it for yourself.</p>
-  <div class="btns"><a class="btn" href="admissions.html#enquire">Book a school tour</a><a class="btn" style="background:#fff;color:var(--green-900);border:2px solid var(--green-700)" href="https://www.tiktok.com/@zis_official1" target="_blank" rel="noopener">More on TikTok</a></div></div>
-  <div class="tt"><iframe src="https://www.tiktok.com/embed/v2/7689522445824314632" title="Zannoo International School video on TikTok" loading="lazy" allowfullscreen allow="encrypted-media; fullscreen"></iframe></div>
+  <p class="kicker hp-k">Academics</p>
+  <h3 class="hp-h">From Pre-School to Key Stage 3</h3><p class="lede">The Oxford International Curriculum alongside GES, taught in small classes by qualified teachers.</p>
+  <div class="hp-stages"><div class="hp-stage"><span class="hp-sn">1</span><h4>Pre-School</h4><p>Baby Unit, Creche, Nursery 1 and 2, Reception 1 and 2</p></div><div class="hp-stage"><span class="hp-sn">2</span><h4>Key Stage 1</h4><p>Year 1 and Year 2</p></div><div class="hp-stage"><span class="hp-sn">3</span><h4>Key Stage 2</h4><p>Year 3, Year 4, Year 5 and Year 6</p></div><div class="hp-stage"><span class="hp-sn">4</span><h4>Key Stage 3</h4><p>Year 7</p></div></div>
+  <p class="hp-center"><a class="btn" href="academics.html">Explore our academics</a></p>
 </div></section>
-<section class="full"><div class="wrap campus">
-  <figure class="frame"><img src="building.jpg" width="990" height="377" alt="The Zannoo International School building at New Nakore-Paani, Wa" loading="lazy"></figure>
-  <div><p class="kicker">Our campus</p><h3>A bright school in the heart of Wa</h3>
-  <p>Zannoo International School stands at New Nakore-Paani in Wa, bringing international-standard learning to the Upper West Region, with inclusive, tech-enhanced spaces, an infirmary with a professional nurse and a safe, caring environment for every child.</p>
-  <div class="btns"><a class="btn" href="contact.html">Visit us</a><a class="btn ghost" href="about.html">Our story</a></div></div>
-</div></section>
+
 <section class="full tint"><div class="wrap">
-  <h3>Our school at a glance</h3><p class="lede">Why Zannoo International School exists: geography should never limit access to quality education.</p>
-  <div class="cards">
-    <div class="card stat"><h4>200+</h4><p>learners, grown from about 37 when we opened in September 2025</p></div>
-    <div class="card stat"><h4>Max 20</h4><p>learners in every class</p></div>
-    <div class="card stat"><h4>16 teachers</h4><p>each with at least a Diploma in Education, supported by 9 non-teaching staff</p></div>
-    <div class="card stat"><h4>Fully accredited</h4><p>by the Oxford International Curriculum, Early Years to A/O-Level</p></div>
-  </div></div></section>
-<section class="full"><div class="wrap">
-  <h3>Why families choose Zannoo</h3><p class="lede">A school that cares about the whole child.</p>
+  <h3 class="hp-h">Why families choose Zannoo</h3><p class="lede">A school that cares about the whole child.</p>
   <div class="cards">
     <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.5"/></svg></span><h4>Global and national standards</h4><p>The Oxford International Curriculum alongside the GES curriculum.</p></div>
     <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-8-4.8-8-10.8A4.5 4.5 0 0 1 12 6.7a4.5 4.5 0 0 1 8 2.5C20 15.200 12 20 12 20z"/></svg></span><h4>Godly values</h4><p>Academic excellence, Godly values and a commitment to greatness.</p></div>
     <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.2l-5.5 3 1-6.2L3 9.6l6.2-.9z"/></svg></span><h4>Inquiry-led learning</h4><p>Skills-based teaching that builds critical thinking and global competence.</p></div>
     <div class="card"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L4 20.5z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><h4>Safe and caring</h4><p>Safeguarding, an infirmary with a professional nurse, and weekly well-being sessions.</p></div>
   </div></div></section>
+
+<section class="full"><div class="wrap hp-news">
+  <div>
+    <h3>Latest news</h3>
+    <ul class="hp-list">
+      <li><a href="admissions.html#enquire"><strong>Admissions are open</strong><span>We are welcoming new learners to the Oxford International Curriculum alongside GES. Send an enquiry.</span></a></li>
+      <li><a href="news.html"><strong>Our school opening</strong><span>We opened on 6th September 2025 with about 37 learners and now have over 200.</span></a></li>
+      <li><a href="https://www.tiktok.com/@zis_official1" target="_blank" rel="noopener"><strong>Follow us on TikTok</strong><span>See school life on @zis_official1.</span></a></li>
+    </ul>
+    <p><a class="more" href="news.html">All news and events</a></p>
+  </div>
+  <div>
+    <h3>Important information</h3>
+    <ul class="hp-list">
+      <li><a href="fees.html#pay"><strong>We are a cashless school</strong><span>Pay by MTN MoMo, Telecel Cash or bank.</span></a></li>
+      <li><a href="fees.html#policy"><strong>Fee policy</strong><span>Full or 75% of fees is due on or before reopening.</span></a></li>
+      <li><a href="admissions.html#uniform"><strong>Dress code and school rules</strong><span>What every learner needs to know.</span></a></li>
+    </ul>
+    <p><a class="more" href="fees.html">Fees and key dates</a></p>
+  </div>
+</div></section>
+
+<section class="full tint"><div class="wrap">
+  <p class="kicker hp-k">Campus life</p>
+  <h3 class="hp-h">Life at Zannoo in pictures</h3>
+  <div class="hp-photos"><a class="hp-ph" href="gallery.html"><img src="gallery-whole-school.jpg" alt="Our Zannoo family" loading="lazy"><span>Our Zannoo family</span></a><a class="hp-ph" href="gallery.html"><img src="gallery-football-pitch.jpg" alt="Mini football pitch" loading="lazy"><span>Mini football pitch</span></a><a class="hp-ph" href="gallery.html"><img src="gallery-computer-lab.jpg" alt="Computer lab session" loading="lazy"><span>Computer lab session</span></a><a class="hp-ph" href="gallery.html"><img src="gallery-dining-hall.jpg" alt="Lunch in the dining hall" loading="lazy"><span>Lunch in the dining hall</span></a><a class="hp-ph" href="gallery.html"><img src="gallery-kg-classroom.jpg" alt="Morning at KG 1" loading="lazy"><span>Morning at KG 1</span></a><a class="hp-ph" href="gallery.html"><img src="gallery-school-bus.jpg" alt="The school bus" loading="lazy"><span>The school bus</span></a></div>
+  <p class="hp-center"><a class="btn" href="gallery.html">Open the gallery</a></p>
+</div></section>
+
+<section class="full tint" id="videos"><div class="wrap">
+  <h3>See life at Zannoo</h3><p class="lede">Our school, our classrooms and our pupils, in their own words and moments.</p>
+  <div class="vpair"><figure class="feat-video"><video controls preload="none" playsinline poster="video-aerial-school.jpg" aria-label="Aerial view of Zannoo International School"><source src="video-aerial-school.mp4" type="video/mp4"></video><figcaption>Our school from above</figcaption></figure><figure class="feat-video"><video controls preload="none" playsinline poster="video-music-dance.jpg" aria-label="Drumming and dance at Zannoo International School"><source src="video-music-dance.mp4" type="video/mp4"></video><figcaption>Drumming and dance</figcaption></figure></div>
+  <div class="vgrid">
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-science-fact.jpg" aria-label="A pupil shares a science fact in class"><source src="video-science-fact.mp4" type="video/mp4"></video><figcaption>Science Fact</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-little-ones.jpg" aria-label="Nursery and KG pupils enjoying the playground"><source src="video-little-ones.mp4" type="video/mp4"></video><figcaption>Our little ones at play</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-library-reading.jpg" aria-label="A pupil reading in our school library"><source src="video-library-reading.mp4" type="video/mp4"></video><figcaption>Reading time</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-library-learning.jpg" aria-label="A pupil studying with books and a dictionary"><source src="video-library-learning.mp4" type="video/mp4"></video><figcaption>Learning in the library</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-human-body.jpg" aria-label="A pupil in a lab coat at the science lab model"><source src="video-human-body.mp4" type="video/mp4"></video><figcaption>Learning the human body</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-hands-on-science.jpg" aria-label="Pupils doing a hands-on activity"><source src="video-hands-on-science.mp4" type="video/mp4"></video><figcaption>Hands-on science</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-future-doctors.jpg" aria-label="Two pupils dressed as doctors"><source src="video-future-doctors.mp4" type="video/mp4"></video><figcaption>Our future doctors</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-pupils-together.jpg" aria-label="Pupils sitting together on the school grounds"><source src="video-pupils-together.mp4" type="video/mp4"></video><figcaption>Meet our pupils</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-hello-pupil-1.jpg" aria-label="A pupil speaking in the school atrium"><source src="video-hello-pupil-1.mp4" type="video/mp4"></video><figcaption>Hello from Zannoo</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-pupils-share.jpg" aria-label="Pupils talk about their school"><source src="video-pupils-share.mp4" type="video/mp4"></video><figcaption>Pupils share school life</figcaption></figure>
+        <figure class="vcard"><video controls preload="none" playsinline poster="video-science-lab.jpg" aria-label="A pupil at the science lab"><source src="video-science-lab.mp4" type="video/mp4"></video><figcaption>In the science lab</figcaption></figure>
+      </div>
+  <p class="vmore"><a class="btn" href="gallery.html#videos">Open the full gallery</a> <a class="btn line dark" href="https://www.tiktok.com/@zis_official1" target="_blank" rel="noopener">More on TikTok</a></p>
+</div></section>
+
+<section class="full ach" id="achievements"><div class="wrap"><p class="kicker">Our achievements</p><h3 class="hp-h">Proud of how far we have come</h3><div class="agrid"><div class="acard"><b>37 &rarr; 200+</b><h4>Learners</h4><p>We opened with about 37 learners and today we serve over 200 families.</p></div><div class="acard"><b>Oxford</b><h4>Accredited curriculum</h4><p>Fully accredited for the Oxford International Curriculum, Early Years to A/O-Level, alongside GES.</p></div><div class="acard"><b>Max 20</b><h4>Per class</h4><p>Small classes that give every child real attention.</p></div><div class="acard"><b>Qualified</b><h4>Teaching team</h4><p>Every teacher holds at least a Diploma in Education.</p></div><div class="acard"><b>Cashless</b><h4>Safe fee payment</h4><p>Pay by MTN MoMo, Telecel Cash or bank, with no cash handled at school.</p></div><div class="acard"><b>Great</b><h4>Facilities</h4><p>A computer lab, dining hall, football pitch and school bus for our pupils.</p></div></div></div></section>
+
+<section class="full tint testi" id="testimonials"><div class="wrap"><p class="kicker">Our promise to parents</p><h3 class="hp-h">What you can expect at Zannoo</h3><div class="tgrid"><figure class="tcard"><blockquote><p><strong>Small classes, personal care</strong><br>We keep classes to a maximum of 20 learners, so every child is known by name, encouraged and supported to do their best.</p></blockquote><figcaption><strong>Zannoo International School</strong><span>School of Life and Learning</span></figcaption></figure><figure class="tcard"><blockquote><p><strong>Learning and character together</strong><br>Our motto is Nurturing Minds, Building Character, Inspiring Greatness. We care about who your child becomes as much as what they learn.</p></blockquote><figcaption><strong>Zannoo International School</strong><span>School of Life and Learning</span></figcaption></figure><figure class="tcard"><blockquote><p><strong>A school that listens</strong><br>Parents are partners in their child's journey. Speak to us at any time, in person, by phone or on WhatsApp, and we will always respond.</p></blockquote><figcaption><strong>Zannoo International School</strong><span>School of Life and Learning</span></figcaption></figure></div><p class="marq-more">Are you a Zannoo parent? We would love to hear your experience. <a href="https://wa.me/233504777497?text=Hello%20Zannoo%20International%20School%2C%20I%20would%20like%20to%20share%20my%20feedback" target="_blank" rel="noopener">Share it on WhatsApp</a></p></div></section>
+
+<section class="full"><div class="wrap hp-visit">
+  <div>
+    <p class="kicker">Visit us</p><h3>Come and see the school</h3>
+    <p>New Nakore-Paani, Wa, Upper West Region, Ghana.</p>
+    <p>Phone: <a href="tel:+233504777497">050 477 7497</a> / <a href="tel:+233244984974">024 498 4974</a><br>Email: <a href="mailto:zannoo.int.sch@gmail.com">zannoo.int.sch@gmail.com</a><br>Office hours: 7:00 am to 5:00 pm</p>
+    <div class="btns"><a class="btn" href="contact.html">Contact us</a><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Zannoo+International+School+New+Nakore-Paani+Wa+Ghana" target="_blank" rel="noopener">Open in Google Maps</a></div>
+  </div>
+  <div class="hp-map"><iframe title="Map of Zannoo International School in Wa" src="https://www.google.com/maps?q=Zannoo+International+School+New+Nakore-Paani+Wa+Ghana&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div></section>
+
+<section class="full life" aria-label="Life at Zannoo"><div class="wrap"><p class="kicker">Life at Zannoo</p><h3 class="hp-h">A look inside our school</h3></div><div class="marq"><div class="marq-track"><a href="gallery.html"><img src="gallery-whole-school.jpg" width="360" height="240" alt="All pupils and teachers together in front of the school" loading="lazy"></a><a href="gallery.html"><img src="gallery-kg-classroom.jpg" width="360" height="240" alt="Teachers welcoming pupils at the KG 1 Lotus classroom door" loading="lazy"></a><a href="gallery.html"><img src="gallery-football-pitch.jpg" width="360" height="240" alt="Pupils on the school football pitch" loading="lazy"></a><a href="gallery.html"><img src="gallery-dining-hall.jpg" width="360" height="240" alt="Pupils in the school dining hall" loading="lazy"></a><a href="gallery.html"><img src="gallery-computer-lab.jpg" width="360" height="240" alt="A computer lab session" loading="lazy"></a><a href="gallery.html"><img src="gallery-entrance-group.jpg" width="360" height="240" alt="Pupils together at the school entrance" loading="lazy"></a><a href="gallery.html"><img src="gallery-school-bus.jpg" width="360" height="240" alt="The Zannoo school bus" loading="lazy"></a><a href="gallery.html"><img src="gallery-staff-team.jpg" width="360" height="240" alt="The Zannoo staff team at reception" loading="lazy"></a><span class="marq-dup" aria-hidden="true"><a href="gallery.html" tabindex="-1"><img src="gallery-whole-school.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-kg-classroom.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-football-pitch.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-dining-hall.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-computer-lab.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-entrance-group.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-school-bus.jpg" width="360" height="240" alt="" loading="lazy"></a><a href="gallery.html" tabindex="-1"><img src="gallery-staff-team.jpg" width="360" height="240" alt="" loading="lazy"></a></span></div></div><div class="wrap"><p class="marq-more"><a href="gallery.html">See the full gallery &rarr;</a></p></div></section>
+
 <section class="cta"><h3>Admissions are open</h3><p>Visit the school, meet our teachers and secure your child's place.</p>
   <div class="btns" style="justify-content:center"><a class="btn light" href="admissions.html#enquire">Start an enquiry</a><a class="btn line" href="tel:+233504777497">Call 050 477 7497</a></div></section>
 </main>
@@ -116,6 +187,38 @@
 </footer>
 <a class="floatwa" href="https://wa.me/233504777497?text=Hello%20Zannoo%20International%20School" target="_blank" rel="noopener" aria-label="Chat with the school on WhatsApp">WhatsApp us</a>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<div class="tour" id="tour" hidden role="dialog" aria-modal="true" aria-label="Campus tour video">
+  <button type="button" class="tour-x" aria-label="Close video">&times;</button>
+  <video controls playsinline preload="none" poster="video-aerial-school.jpg"><source data-src="video-aerial-school.mp4" type="video/mp4"></video>
+</div>
+<script>
+(function(){
+var t=document.getElementById('tour');if(!t)return;var v=t.querySelector('video'),src=v.querySelector('source');
+function open(){if(!src.src){src.src=src.dataset.src;v.load();}t.hidden=false;document.body.style.overflow='hidden';v.play().catch(function(){});t.querySelector('.tour-x').focus();}
+function close(){v.pause();t.hidden=true;document.body.style.overflow='';}
+[].forEach.call(document.querySelectorAll('[data-tour]'),function(b){b.addEventListener('click',open);});
+t.querySelector('.tour-x').onclick=close;t.addEventListener('click',function(e){if(e.target===t)close();});
+document.addEventListener('keydown',function(e){if(!t.hidden&&e.key==='Escape')close();});
+})();
+(function(){
+var els=[].slice.call(document.querySelectorAll('.hp-stats b[data-count]'));if(!els.length||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,end=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',st=null;
+function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1200,1);el.textContent=pre+Math.round(end*p)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});},{threshold:.6});
+els.forEach(function(el){io.observe(el);});
+})();
+</script>
+<script>
+(function(){var v=document.getElementById('heroVid');if(!v)return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.remove();return;}
+var p=v.play&&v.play();if(p&&p.then){p.then(function(){v.classList.add('on');}).catch(function(){});}
+document.addEventListener('visibilitychange',function(){if(document.hidden){v.pause();}else{v.play().catch(function(){});}});
+})();
+</script>
+<script>
+(function(){var vs=[].slice.call(document.querySelectorAll('.vcard video,.feat-video video'));
+vs.forEach(function(v){v.addEventListener('play',function(){vs.forEach(function(o){if(o!==v)o.pause();});});});})();
+</script>
 <script src="config.js"></script>
 <script src="script.js"></script>
 </body>

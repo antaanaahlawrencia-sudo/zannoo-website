@@ -17,7 +17,7 @@ Pages: index, about, admissions, fees, academics, gallery, news, staff, faq, con
      follow the comment inside the "slides" block in index.html (MP4, compressed, under 15 MB).
    - News bar: the scrolling strip under the top bar is in every page (search for class="newsbar"); edit the links in the
      same order on each page, or ask for an update.
-   - Gallery: add photos and more TikTok videos in gallery.html.
+   - Gallery: add photos and more videos in gallery.html (copy a vcard block; keep each video under 10 MB).
    - Staff: add real names, roles and photos in staff.html.
 
 3) SAVE ENQUIRIES
