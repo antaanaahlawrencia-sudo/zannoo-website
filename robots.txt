@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://antaanaahlawrencia-sudo.github.io/zannoo-website/sitemap.xml
